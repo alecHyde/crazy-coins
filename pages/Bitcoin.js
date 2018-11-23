@@ -1,18 +1,22 @@
 import Layout from '../components/layout/layout';
 import API from '../components/api/apiRequests';
+import CurrencyChart from '../components/chart/Chart';
 
-const Bitcoin = () => (
+const Bitcoin = (props) => (
   <Layout>
     <h3>Bitcoin</h3>
+    {console.log('DATA', props.chartData)}
+    <CurrencyChart data={props.chartData}/>
   </Layout>
 )
 
-Bitcoin.getInitialProps = () => {
-  const bitcoin = API.getCryptoCurrency();
-  console.log('bitcoin getInitialProps', bitcoin);
+Bitcoin.getInitialProps = async () => {
+
+  const code = 'BTC';
+  const bitcoinCurrencyData = await API.getCryptoCurrency(code);
 
   return {
-    chartData: 'bitcoin thing for now'
+    chartData: bitcoinCurrencyData
   }
 
 }

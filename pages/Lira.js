@@ -1,5 +1,5 @@
 import Layout from '../components/layout/layout';
-
+import API from '../components/api/apiRequests';
 import CurrencyChart from '../components/chart/Chart';
 
 
@@ -21,7 +21,7 @@ const Lira = (props) => {
 
 Lira.getInitialProps = async () => {
 
-  const code = 'TRY'
+  const code = 'TRY';
   const liraCurrencyData = await API.getInternationalCurrency(code);
 
   return {
