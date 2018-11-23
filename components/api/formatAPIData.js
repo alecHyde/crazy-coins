@@ -13,7 +13,8 @@ const formatInternationalCurrencyData = (data, currencyCode) => {
   dataArr.forEach(item => {
     item.date = item.date.toISOString().slice(0, 10);
     datesArr.push(item.date);
-    pricesArr.push(item.data);
+    item.data = 1/item.data
+    pricesArr.push(item.data.toFixed(4));
   });
 
   return [ datesArr, pricesArr ];
@@ -25,7 +26,8 @@ const formatCryptoCurrencyData = (data) => {
   data.forEach(item => {
     item.timestamp = item.timestamp.slice(0, 10);
     datesArr.push(item.timestamp);
-    pricesArr.push(item.rate);
+    item.rate = Number(item.rate);
+    pricesArr.push(item.rate.toFixed(2));
   });
 
   return [ datesArr, pricesArr ];

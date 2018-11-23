@@ -21,7 +21,6 @@ const getCryptoCurrency = async (currencyCode, date) => {
   const dataObj = JSON.parse(data);
   
   const formattedCCData = formatData.formatCryptoCurrencyData(dataObj);
-  console.log('formattedCCData', formattedCCData)
   const chartData = formatChartData(formattedCCData, currencyCode);
 
   return chartData;
@@ -33,8 +32,18 @@ const formatChartData = (data, currencyCode) => {
     labels: data[0],
     datasets: [
       {
-        label: `${currencyCode}/USD`,
+        label: `${currencyCode}`,
         data: data[1],
+        backgroundColor: "rgba(55,55,55,0.3)",
+        borderColor: "#c0b283",
+        borderWidth: 8,
+        lineTension: 1,
+        pointRadius: 1,
+        pointHoverBackgroundColor: "#e9b000",
+        pointHoverRadius: 10,
+        pointHoverBorderColor: "#373737",
+        pointHoverBorderWidth: 2
+
       }
     ]
   }

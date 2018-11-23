@@ -8,6 +8,10 @@ const CurrencyChart = (props) => {
       yAxes: [{
         ticks: {
           beginAtZero:true  
+        },
+        scaleLabel: {
+          display: true,
+          labelString: `USD/${props.code}`
         }
       }]
     }
