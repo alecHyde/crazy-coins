@@ -22,8 +22,8 @@ const CurrencyChart = (props) => {
     <div>
       <RC2 data={props.data} type='line' options={chartOptions} />
       <style jsx>{`
-        RC2 {
-          border: 8px solid blue;
+        div {
+          margin: 2em 5em;
         }
       `}</style>
     </div>

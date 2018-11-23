@@ -4,7 +4,7 @@ import CurrencyChart from '../components/chart/Chart';
 
 const Lira = (props) => (
   <Layout color1="#e30a17" color2="#ffffff" color3="#e30a17">
-    <h3>Lira</h3>
+    <h1>Lira</h1>
     <CurrencyChart data={props.chartData} code='TRY'/>
   </Layout>
 )

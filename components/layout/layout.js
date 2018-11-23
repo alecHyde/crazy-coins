@@ -13,17 +13,18 @@ const Layout = (props) => (
         }
       `}</style>
       <style jsx>{`
-        div{
+        div {
           background: linear-gradient(45deg, ${props.color1} 20%, ${props.color2} 50%, ${props.color3} 85%);
         }
       `}</style>
-  {/*  <style jsx global>{`
-      .title {
-        color: red,
-        font-size: 5.0em;
-        font-weight: 800;
-      }
-    `}</style>*/}
+      <style jsx global>{`
+        h1 {
+          color: #373737;
+          font-size: 3.0em;
+          font-weight: 800;
+          margin: .5em .5em;
+        }
+      `}</style>
 
   </div>
 )
