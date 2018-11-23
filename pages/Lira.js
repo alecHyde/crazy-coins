@@ -2,22 +2,15 @@ import Layout from '../components/layout/layout';
 import API from '../components/api/apiRequests';
 import CurrencyChart from '../components/chart/Chart';
 
+const Lira = (props) => (
+  <Layout>
+    <h3>Lira</h3>
 
-import RC2 from 'react-chartjs-2';
+    <CurrencyChart data={props.chartData}/>
+   
+  </Layout>
+)
 
-const Lira = (props) => {
-
-
-
-  return (
-    <Layout>
-      <h3>Lira</h3>
-
-      <CurrencyChart data={props.chartData}/>
-     
-    </Layout>
-  )
-}
 
 Lira.getInitialProps = async () => {
 
