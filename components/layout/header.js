@@ -1,49 +1,60 @@
 import Link from 'next/link';
 
 const Header = () => (
-  <div>
+  <div className="header">
  
     <Link href="/">
-      <button>Home</button>
+      <div className="button">Home</div>
     </Link>
     <Link href="/Ruble">
-      <button>Russia - Ruble (RUB)</button>
+      <div className="button">Russia - Ruble (RUB)</div>
     </Link>
     <Link href="/Rand">
-      <button>South Africa - Rand (ZAR)</button>
+      <div className="button">South Africa - Rand (ZAR)</div>
     </Link>
     <Link href="/Lira">
-      <button>Turkey - Lira (TRY)</button>
+      <div className="button">Turkey - Lira (TRY)</div>
     </Link>
     <Link href="/Bitcoin">
-      <button>Crypto - Bitcoin (BTC)</button>
+      <div className="button">Crypto - Bitcoin (BTC)</div>
     </Link>
     <Link href="/Etherium">
-      <button>Crypto - Etherium (ETH)</button>
+      <div className="button">Crypto - Etherium (ETH)</div>
     </Link>
 
     <style jsx>{`
-      button {
+      .button {
         display: inline flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        border: 2px solid black; 
+        flex-wrap: wrap; 
         text-align: center;
-        padding: 0.25em 0.25em;
-        background: white;
-        color: black;
+        padding: 0.25em 0.75em;
+        margin: 0.5em 0.3em;
+        border-bottom: 1px solid #C0B283;
+        background: #373737;
+        color: #F4F4F4;
+        font-weight: 100;
+        font-size: 1.0em;
       }
-      div {
+      .button:hover {
+        color: #C0B283;
+      }
+      .header {
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        border: 5px solid black;
-        background: blue;
+        border-bottom: 8px solid #C0B283;
+        background: #373737;
       }
     `}</style>
     
 
   </div>
 )
+
+// charcoal - #373737
+// silk - #DCD0C0
+// pale gold - #C0B283
+// paper - #F4F4F4
 
 export default Header;

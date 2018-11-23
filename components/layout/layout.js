@@ -7,10 +7,14 @@ const Layout = (props) => (
       {props.children}
       <style jsx>{`
         div {
-          background: #d3d3d3;
           display: flex;
           flex-direction: column;
           min-height: 55em;
+        }
+      `}</style>
+      <style jsx>{`
+        div{
+          background: linear-gradient(45deg, ${props.color1} 20%, ${props.color2} 50%, ${props.color3} 85%);
         }
       `}</style>
 

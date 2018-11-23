@@ -34,7 +34,7 @@ const formatChartData = (data, currencyCode) => {
     datasets: [
       {
         label: `${currencyCode}/USD`,
-        data: data[1]
+        data: data[1],
       }
     ]
   }

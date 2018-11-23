@@ -3,7 +3,7 @@ import API from '../components/api/apiRequests';
 import CurrencyChart from '../components/chart/Chart';
 
 const Lira = (props) => (
-  <Layout>
+  <Layout color1="#e30a17" color2="#ffffff" color3="#e30a17">
     <h3>Lira</h3>
 
     <CurrencyChart data={props.chartData}/>

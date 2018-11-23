@@ -3,7 +3,7 @@ import API from '../components/api/apiRequests';
 import CurrencyChart from '../components/chart/Chart';
 
 const Rand = (props) => (
-  <Layout>
+  <Layout color1="#000000" color2="#ffb612" color3="#007a4d">
     <h3>Rand</h3>
     <CurrencyChart data={props.chartData}/>
   </Layout>

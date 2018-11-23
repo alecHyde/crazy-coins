@@ -3,7 +3,7 @@ import API from '../components/api/apiRequests';
 import CurrencyChart from '../components/chart/Chart';
 
 const Etherium = (props) => (
-  <Layout>
+  <Layout color1="#3c3c3d" color2="#ecf0f1" color3="#3c3c3d">
     <h3>Etherium</h3>
     <CurrencyChart data={props.chartData}/>
   </Layout>
