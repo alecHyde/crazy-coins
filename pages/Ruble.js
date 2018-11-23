@@ -10,8 +10,10 @@ const Ruble = (props) => (
 )
 
 Ruble.getInitialProps = async () => {
+  const startDate = API.getDateLastYear();
+  const endDate = API.getDateToday()
   const code = 'RUB';
-  const rubleCurrencyData = await API.getInternationalCurrency(code);
+  const rubleCurrencyData = await API.getInternationalCurrency(code, startDate, endDate);
 
   return {
     chartData: rubleCurrencyData

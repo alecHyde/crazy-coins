@@ -11,9 +11,9 @@ const Bitcoin = (props) => (
 )
 
 Bitcoin.getInitialProps = async () => {
-
+  const date = API.getDateLastYear();
   const code = 'BTC';
-  const bitcoinCurrencyData = await API.getCryptoCurrency(code);
+  const bitcoinCurrencyData = await API.getCryptoCurrency(code, date);
 
   return {
     chartData: bitcoinCurrencyData

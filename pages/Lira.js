@@ -13,9 +13,10 @@ const Lira = (props) => (
 
 
 Lira.getInitialProps = async () => {
-
+  const startDate = API.getDateLastYear();
+  const endDate = API.getDateToday()
   const code = 'TRY';
-  const liraCurrencyData = await API.getInternationalCurrency(code);
+  const liraCurrencyData = await API.getInternationalCurrency(code, startDate, endDate);
 
   return {
     chartData: liraCurrencyData

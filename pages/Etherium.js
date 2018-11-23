@@ -10,8 +10,10 @@ const Etherium = (props) => (
 )
 
 Etherium.getInitialProps = async () => {
-  const code = 'ETH';
-  const etheriumCurrencyData = await API.getCryptoCurrency(code);
+  const date = API.getDateLastYear();
+  console.log('DATE', date);
+  const code = 'ETH'; 
+  const etheriumCurrencyData = await API.getCryptoCurrency(code, date);
 
   return {
     chartData: etheriumCurrencyData

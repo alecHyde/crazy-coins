@@ -3,9 +3,9 @@ import fetch from 'isomorphic-unfetch';
 import formatData from './formatAPIData';
 import apiKey from '../../config';
 
-let getInternationalCurrency = async (currencyCode) => {
+const getInternationalCurrency = async (currencyCode, startDate, endDate) => {
 
-  const data = await fetch(`https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-02-03&symbols=${currencyCode}&base=USD`)
+  const data = await fetch(`https://api.exchangeratesapi.io/history?start_at=${startDate}&end_at=${endDate}&symbols=${currencyCode}&base=USD`)
     .then(res => res.text());
   const dataObj = JSON.parse(data);
 
@@ -15,12 +15,13 @@ let getInternationalCurrency = async (currencyCode) => {
   return chartData;
 }
 
-const getCryptoCurrency = async (currencyCode) => {
-  const data = await fetch(`https://api.nomics.com/v1/exchange-rates/history?key=${apiKey}&currency=${currencyCode}&start=2018-10-01T01%3A01%3A01Z`)
+const getCryptoCurrency = async (currencyCode, date) => {
+  const data = await fetch(`https://api.nomics.com/v1/exchange-rates/history?key=${apiKey}&currency=${currencyCode}&start=${date}T01%3A01%3A01Z`)
     .then(res => res.text());
   const dataObj = JSON.parse(data);
-
+  
   const formattedCCData = formatData.formatCryptoCurrencyData(dataObj);
+  console.log('formattedCCData', formattedCCData)
   const chartData = formatChartData(formattedCCData, currencyCode);
 
   return chartData;
@@ -40,4 +41,26 @@ const formatChartData = (data, currencyCode) => {
 
 }
 
-export default { getInternationalCurrency, getCryptoCurrency }
+const getDateLastYear = () => {
+  const currentDate = new Date();
+  const currentDateStr = currentDate.toISOString();
+  const year = Number(currentDateStr.slice(0, 4));
+  let lastYear = year - 1;
+  lastYear = lastYear.toString();
+  const month = currentDateStr.slice(5, 7);
+  let day = currentDateStr.slice(8, 10);
+  // leap years
+  if(month === '2' && day === '29') {
+    day = '28';
+  }
+  return `${lastYear}-${month}-${day}`;
+}
+
+const getDateToday = () => {
+  const currentDate = new Date();
+  const currentDateStr = currentDate.toISOString();
+  return currentDateStr.slice(0, 10);
+
+}
+
+export default { getInternationalCurrency, getCryptoCurrency, getDateLastYear, getDateToday }

@@ -10,8 +10,10 @@ const Rand = (props) => (
 )
 
 Rand.getInitialProps = async () => {
+  const startDate = API.getDateLastYear();
+  const endDate = API.getDateToday()
   const code = 'ZAR';
-  const randCurrencyData = await API.getInternationalCurrency(code);
+  const randCurrencyData = await API.getInternationalCurrency(code, startDate, endDate);
 
   return {
     chartData: randCurrencyData
