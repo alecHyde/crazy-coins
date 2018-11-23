@@ -1,6 +1,7 @@
 
 import fetch from 'isomorphic-unfetch';
 import formatData from './formatAPIData';
+import apiKey from '../../config';
 
 let getInternationalCurrency = async (currencyCode) => {
 
@@ -25,7 +26,7 @@ let getInternationalCurrency = async (currencyCode) => {
 }
 
 const getCryptoCurrency = () => {
-  return 'CALLING WITHIN getCryptoCurrency'
+  console.log('API KEY', apiKey, 'type', typeof apiKey)
 }
 
 
