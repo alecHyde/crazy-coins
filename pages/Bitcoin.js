@@ -4,7 +4,7 @@ import CurrencyChart from '../components/chart/Chart';
 
 const Bitcoin = (props) => (
   <Layout color1="#f2a900" color2="#ecf0f1" color3="#f2a900">
-    <h3>Bitcoin</h3>
+    <h1>Bitcoin</h1>
     <CurrencyChart data={props.chartData} code='BTC'/>
   </Layout>
 )

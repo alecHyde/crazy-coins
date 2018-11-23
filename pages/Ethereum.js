@@ -4,7 +4,7 @@ import CurrencyChart from '../components/chart/Chart';
 
 const Etherium = (props) => (
   <Layout color1="#3c3c3d" color2="#ecf0f1" color3="#3c3c3d">
-    <h3>Etherium</h3>
+    <h1>Ethereum</h1>
     <CurrencyChart data={props.chartData} code='ETH'/>
   </Layout>
 )

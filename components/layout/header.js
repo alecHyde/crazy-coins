@@ -18,8 +18,8 @@ const Header = () => (
     <Link href="/Bitcoin">
       <div className="button">Crypto - Bitcoin (BTC)</div>
     </Link>
-    <Link href="/Etherium">
-      <div className="button">Crypto - Etherium (ETH)</div>
+    <Link href="/Ethereum">
+      <div className="button">Crypto - Ethereum (ETH)</div>
     </Link>
 
     <style jsx>{`
@@ -29,7 +29,7 @@ const Header = () => (
         flex-wrap: wrap; 
         text-align: center;
         padding: 0.25em 0.75em;
-        margin: 0.5em 0.3em;
+        margin: 0.5em 0.5em;
         border-bottom: 1px solid #C0B283;
         background: #373737;
         color: #F4F4F4;
