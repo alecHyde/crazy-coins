@@ -1,6 +1,6 @@
 # Crazy-Coins
 
-Compare some of the most volitile currencies in the world. Featured currencies include the Russian Ruple, the South African Rand, the Turkish Lira, as well as two cryptocurrencies, Bitcoin and Etherium. All prices are in comparison to the US Dollar. 
+> Compare some of the most volitile currencies in the world. Featured currencies include the Russian Ruple, the South African Rand, the Turkish Lira, as well as two cryptocurrencies, Bitcoin and Etherium. All prices are in comparison to the US Dollar. 
 ---
 
 
