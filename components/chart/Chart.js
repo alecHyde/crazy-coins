@@ -34,7 +34,6 @@ class CurrencyChart extends React.Component {
   }
 
   async getNewCurrencyData(timeline) {
-    const endDate = API.getDateToday();
     let startDate;
     if(timeline === 'year') {
       startDate = API.getDateLastYear();
@@ -45,6 +44,7 @@ class CurrencyChart extends React.Component {
     }
     
     if(this.props.currency === 'international') {
+      const endDate = API.getDateToday();
       const newCurrencyData = await API.getInternationalCurrency(this.state.coinCode, startDate, endDate);
       return newCurrencyData;
     } else {
