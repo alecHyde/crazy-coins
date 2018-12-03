@@ -1,88 +1,80 @@
 import RC2 from 'react-chartjs-2';
 
-const CurrencyChart = (props) => {
-  
-  const chartOptions = {
-    showScale: true,
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero:true  
-        },
-        scaleLabel: {
-          display: true,
-          labelString: `USD/${props.code}`
-        }
-      }]
-    }
+class CurrencyChart extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.handleYearClick = this.handleYearClick.bind(this);
+    this.handleMonthClick = this.handleMonthClick.bind(this);
+    this.handleWeekClick = this.handleWeekClick.bind(this);
+
+    this.state = {
+      view: 'year',
+      coinCode: props.code,
+      data: props.data
+    }
+  
   }
 
-  return (
-    <div>
-      <RC2 data={props.data} type='line' options={chartOptions} />
-      <style jsx>{`
-        div {
-          margin: 2em 5em;
-        }
-      `}</style>
-    </div>
-  )
-}
+  chartOptions() {
+    return {
+      showScale: true,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true  
+          },
+          scaleLabel: {
+            display: true,
+            labelString: `USD/${this.state.coinCode}`
+          }
+        }]
+      }
+
+    }
+  }
+ 
+  handleYearClick () {
+    if(this.state.view === 'year') {
+      return
+    }
+    console.log('CLICKED year')
+  }
+
+  handleMonthClick () {
+    if(this.state.view === 'month') {
+      return
+    }
+    console.log('CLICKED month')
+  }
+
+  handleWeekClick () {
+    if(this.state.view === 'week') {
+      return
+    }
+    console.log('CLICKED week')
+  }
+
+  render () {
+    return (
+      <div>
+        <RC2 data={this.state.data} type='line' options={this.chartOptions()} />
+        <div>
+          <button onClick={this.handleYearClick}> Year </button>
+          <button onClick={this.handleMonthClick}> Month </button>
+          <button onClick={this.handleWeekClick}> Week </button>
+        </div>
+        <style jsx>{`
+          div {
+            margin: 2em 5em;
+          }
+        `}</style>
+
+        {console.log('STATE', this.state)}
+
+      </div>
+    )
+  }
+} 
 
 export default CurrencyChart;
-
-
-//  var chartOptions = {
-//             showScale: true,
-//             pointDot: true,
-//             showLines: false,
-
-//             title: {
-//                 display: true,
-//                 text: 'Chart.js Bar Chart'
-//             },
-
-//             legend: {
-//                 display: true,
-//                 labels: {
-//                     boxWidth: 50,
-//                     fontSize: 10,
-//                     fontColor: '#bbb',
-//                     padding: 5,
-//                 }
-//             },
-
-//         }
-
-
-// var chartOptions = {
-//     showScale: true,
-//     pointDot: true,
-//     showLines: false,
-
-//     title: {
-//         display: true,
-//         text: 'Chart.js Bar Chart'
-//     },
-
-//     legend: {
-//         display: true,
-//         labels: {
-//             boxWidth: 50,
-//             fontSize: 10,
-//             fontColor: '#bbb',
-//             padding: 5,
-//         }
-//     },
-
-//     scales: {
-//       yAxes: [{
-//           ticks: {
-//               beginAtZero:true,
-//               min: 0,
-//               max: 100    
-//           }
-//         }]
-//      }
-// }

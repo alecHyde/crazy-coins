@@ -23,7 +23,7 @@ const apiKey = 'GET_AIP_KEY_FROM_NOMICS';
 
 export default apiKey;
 ```
-Replace GET_AIP_KEY_FROM_NOMICS with your free personal API key optainable at https://p.nomics.com/cryptocurrency-bitcoin-api
+Replace GET_AIP_KEY_FROM_NOMICS with your free personal API key obtainable at https://p.nomics.com/cryptocurrency-bitcoin-api
 
 
 ### Author
