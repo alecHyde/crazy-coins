@@ -64,7 +64,6 @@ const getDateLastYear = () => {
   return `${lastYear}-${month}-${day}`;
 }
 
-
 const getDateToday = () => {
   const currentDate = new Date();
   const currentDateStr = currentDate.toISOString();

@@ -5,9 +5,7 @@ class CurrencyChart extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleYearClick = this.handleYearClick.bind(this);
-    this.handleMonthClick = this.handleMonthClick.bind(this);
-    this.handleWeekClick = this.handleWeekClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.getNewCurrencyData = this.getNewCurrencyData.bind(this);
 
     this.state = {
@@ -32,47 +30,39 @@ class CurrencyChart extends React.Component {
           }
         }]
       }
-
     }
   }
 
-  getNewCurrencyData() {
-    const today = API.getDateToday();
-    const lastYear = API.getDateLastYear();
-    const lastMonth = API.getDateLastMonth();
-    const lastWeek = API.getDateLastWeek();
-
-    console.log('TODAY', today, 'LAST YEAR', lastYear, 'LAST MONTH', lastMonth, 'LAST WEEK', lastWeek);
-
+  async getNewCurrencyData(timeline) {
+    const endDate = API.getDateToday();
+    let startDate;
+    if(timeline === 'year') {
+      startDate = API.getDateLastYear();
+    } else if(timeline === 'month') {
+      startDate = API.getDateLastMonth();
+    } else if (timeline === 'week') {
+      startDate = API.getDateLastWeek();
+    }
+    
     if(this.props.currency === 'international') {
-      console.log('GET NEW DATA INTERNATIONAL')
+      const newCurrencyData = await API.getInternationalCurrency(this.state.coinCode, startDate, endDate);
+      return newCurrencyData;
     } else {
-      console.log('GET NEW DATA CRYPTO')
+      const newCurrencyData = await API.getCryptoCurrency(this.state.coinCode, startDate);
+      return newCurrencyData;
     }
   }
  
-  handleYearClick () {
-    if(this.state.view === 'year') {
+  async handleClick (e) {
+    const view = e.target.value;
+    if(this.state.view === view) {
       return;
     }
-    console.log('CLICKED year')
-    this.getNewCurrencyData()
-  }
-
-  handleMonthClick () {
-    if(this.state.view === 'month') {
-      return;
-    }
-    console.log('CLICKED month')
-    this.getNewCurrencyData()
-  }
-
-  handleWeekClick () {
-    if(this.state.view === 'week') {
-      return;
-    }
-    console.log('CLICKED week')
-    this.getNewCurrencyData()
+    const newData = await this.getNewCurrencyData(view);
+    this.setState({
+      view: view,
+      data: newData
+    });
   }
 
   render () {
@@ -80,18 +70,15 @@ class CurrencyChart extends React.Component {
       <div>
         <RC2 data={this.state.data} type='line' options={this.chartOptions()} />
         <div>
-          <button onClick={this.handleYearClick}> Year </button>
-          <button onClick={this.handleMonthClick}> Month </button>
-          <button onClick={this.handleWeekClick}> Week </button>
+          <button value="year" onClick={this.handleClick}> Year </button>
+          <button value="month" onClick={this.handleClick}> Month </button>
+          <button value="week" onClick={this.handleClick}> Week </button>
         </div>
         <style jsx>{`
           div {
             margin: 2em 5em;
           }
         `}</style>
-
-        {console.log('STATE', this.state)}
-
       </div>
     )
   }
