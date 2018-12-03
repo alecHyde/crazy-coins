@@ -6,7 +6,7 @@ import InternationalCitation from '../components/chart/InternationalCitation';
 const Ruble = (props) => (
   <Layout color1="#0039a6" color2="#ffffff" color3="#d52b1e">
     <h1>Ruble</h1>
-    <CurrencyChart data={props.chartData} code='RUB'/>
+    <CurrencyChart data={props.chartData} code='RUB' currency='international'/>
     <InternationalCitation color="#ffffff"/>
   </Layout>
 )

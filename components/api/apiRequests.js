@@ -43,7 +43,6 @@ const formatChartData = (data, currencyCode) => {
         pointHoverRadius: 10,
         pointHoverBorderColor: "#373737",
         pointHoverBorderWidth: 2
-
       }
     ]
   }
@@ -65,11 +64,25 @@ const getDateLastYear = () => {
   return `${lastYear}-${month}-${day}`;
 }
 
+
 const getDateToday = () => {
   const currentDate = new Date();
   const currentDateStr = currentDate.toISOString();
   return currentDateStr.slice(0, 10);
-
 }
 
-export default { getInternationalCurrency, getCryptoCurrency, getDateLastYear, getDateToday }
+const getDateLastMonth = () => {
+  const currentDate = new Date();
+  const lastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, currentDate.getDate());
+  const lastMonthDateStr = lastMonth.toISOString();
+  return lastMonthDateStr.slice(0, 10);
+}
+
+const getDateLastWeek = () => {
+  const currentDate = new Date();
+  const lastWeek = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 7);
+  const lastWeekDateStr = lastWeek.toISOString();
+  return lastWeekDateStr.slice(0, 10);
+}
+
+export default { getInternationalCurrency, getCryptoCurrency, getDateLastYear, getDateToday, getDateLastMonth, getDateLastWeek }

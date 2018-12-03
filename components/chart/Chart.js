@@ -1,4 +1,5 @@
 import RC2 from 'react-chartjs-2';
+import API from '../api/apiRequests';
 
 class CurrencyChart extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class CurrencyChart extends React.Component {
     this.handleYearClick = this.handleYearClick.bind(this);
     this.handleMonthClick = this.handleMonthClick.bind(this);
     this.handleWeekClick = this.handleWeekClick.bind(this);
+    this.getNewCurrencyData = this.getNewCurrencyData.bind(this);
 
     this.state = {
       view: 'year',
@@ -33,26 +35,44 @@ class CurrencyChart extends React.Component {
 
     }
   }
+
+  getNewCurrencyData() {
+    const today = API.getDateToday();
+    const lastYear = API.getDateLastYear();
+    const lastMonth = API.getDateLastMonth();
+    const lastWeek = API.getDateLastWeek();
+
+    console.log('TODAY', today, 'LAST YEAR', lastYear, 'LAST MONTH', lastMonth, 'LAST WEEK', lastWeek);
+
+    if(this.props.currency === 'international') {
+      console.log('GET NEW DATA INTERNATIONAL')
+    } else {
+      console.log('GET NEW DATA CRYPTO')
+    }
+  }
  
   handleYearClick () {
     if(this.state.view === 'year') {
-      return
+      return;
     }
     console.log('CLICKED year')
+    this.getNewCurrencyData()
   }
 
   handleMonthClick () {
     if(this.state.view === 'month') {
-      return
+      return;
     }
     console.log('CLICKED month')
+    this.getNewCurrencyData()
   }
 
   handleWeekClick () {
     if(this.state.view === 'week') {
-      return
+      return;
     }
     console.log('CLICKED week')
+    this.getNewCurrencyData()
   }
 
   render () {
